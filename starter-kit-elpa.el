@@ -7,6 +7,7 @@
                                    'inf-ruby
                                    'js2-mode
                                    'css-mode
+                                   'gist
                                ;; To submit:
 ;;;                                "magit"
 ;;;                                "paredit"
