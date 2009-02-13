@@ -72,7 +72,8 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'textile-mode-hook 'auto-fill-mode)
 (add-hook 'textile-mode-hook 'flyspell-mode)
-
+(add-hook 'markdown-mode-hook 'auto-fill-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (random t) ;; Seed the random-number generator
@@ -112,6 +113,10 @@
   '(progn
      (set-face-foreground 'magit-diff-add "green3")
      (set-face-foreground 'magit-diff-del "red3")))
+
+(eval-after-load 'nxhtml
+  '(eval-after-load 'zenburn
+     '(set-face-background 'mumamo-background-chunk-submode "gray22")))
 
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
