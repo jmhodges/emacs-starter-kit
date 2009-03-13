@@ -5,13 +5,14 @@
 ; I don't agree with Yegge, yet.
 ; (global-set-key "\C-c\C-k" 'kill-region)
 
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (add-to-list 'load-path "~/emacs/jmhodges")
 (require 'font_config)
 (require 'python_mode_config)
 (require 'haml_mode_config)
+(require 'c_mode_config)
 (require 'yegge_stuff)
-
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+(require 'quack)

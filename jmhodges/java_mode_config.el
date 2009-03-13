@@ -1,0 +1,7 @@
+(defun jmhodges-java-identation ()
+  (print "HERE")
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  )
+(add-hook 'java-mode-hook 'coding-hook)
+(add-hook 'java-mode-hook 'jmhodges-java-identation)
