@@ -15,5 +15,6 @@
 (require 'ruby_mode_config)
 (require 'haml_mode_config)
 (require 'c_mode_config)
+(require 'java_mode_config)
 (require 'yegge_stuff)
 (require 'quack)
