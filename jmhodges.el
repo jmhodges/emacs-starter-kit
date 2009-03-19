@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/emacs/jmhodges")
 (require 'font_config)
 (require 'python_mode_config)
+(require 'ruby_mode_config)
 (require 'haml_mode_config)
 (require 'c_mode_config)
 (require 'yegge_stuff)
