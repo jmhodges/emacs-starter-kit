@@ -18,3 +18,5 @@
 (require 'java_mode_config)
 (require 'yegge_stuff)
 (require 'quack)
+(require 'window-number)
+(window-number-meta-mode 1)
