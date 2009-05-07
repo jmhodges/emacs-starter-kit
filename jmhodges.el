@@ -18,5 +18,5 @@
 (require 'java_mode_config)
 (require 'yegge_stuff)
 (require 'quack)
-(require 'window-number)
-(window-number-meta-mode 1)
+(setq browse-url-browser-function 'browse-default-macosx-browser)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
