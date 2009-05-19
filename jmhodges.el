@@ -9,7 +9,8 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(add-to-list 'load-path "~/emacs/jmhodges")
+; FIXME use load-file-name for this.
+(add-to-list 'load-path "~/.emacs.d/jmhodges")
 (require 'font_config)
 (require 'python_mode_config)
 (require 'ruby_mode_config)
@@ -21,3 +22,7 @@
 (setq browse-url-browser-function 'browse-default-macosx-browser)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (require 'thrift-mode)
+
+(add-to-list 'load-path "~/.emacs.d/jmhodges/scala")
+(require 'scala-mode-auto)
+(require 'scala_mode_config)
