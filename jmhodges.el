@@ -26,3 +26,5 @@
 (add-to-list 'load-path "~/.emacs.d/jmhodges/scala")
 (require 'scala-mode-auto)
 (require 'scala_mode_config)
+
+(require 'autotest)
