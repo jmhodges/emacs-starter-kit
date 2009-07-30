@@ -28,3 +28,5 @@
 (require 'scala_mode_config)
 
 (require 'autotest)
+
+(require 'groovy_mode_config)
