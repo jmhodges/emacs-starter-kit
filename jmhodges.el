@@ -18,7 +18,7 @@
 (require 'c_mode_config)
 (require 'java_mode_config)
 (require 'yegge_stuff)
-(require 'quack)
+
 (setq browse-url-browser-function 'browse-default-macosx-browser)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (require 'thrift-mode)
