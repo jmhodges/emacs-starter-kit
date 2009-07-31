@@ -19,7 +19,8 @@
 (require 'java_mode_config)
 (require 'yegge_stuff)
 
-(setq browse-url-browser-function 'browse-default-macosx-browser)
+(setq browse-url-browser-function 'browse-url-default-macosx-browser)
+
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (require 'thrift-mode)
 
