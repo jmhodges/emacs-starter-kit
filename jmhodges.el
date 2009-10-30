@@ -11,6 +11,10 @@
 
 ; FIXME use load-file-name for this.
 (add-to-list 'load-path "~/.emacs.d/jmhodges")
+
+(add-to-list 'load-path "~/.emacs.d/jmhodges/scala")
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 (require 'font_config)
 (require 'python_mode_config)
 (require 'ruby_mode_config)
@@ -18,16 +22,12 @@
 (require 'c_mode_config)
 (require 'java_mode_config)
 (require 'yegge_stuff)
-
-(setq browse-url-browser-function 'browse-url-default-macosx-browser)
-
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (require 'thrift-mode)
-
-(add-to-list 'load-path "~/.emacs.d/jmhodges/scala")
-(require 'scala-mode-auto)
 (require 'scala_mode_config)
-
 (require 'autotest)
-
 (require 'groovy_mode_config)
+(require 'url_decode)
+(require 'rcov-overlay)
+(remove-hook 'coding-hooks 'pretty-lambda)
+(setq ispell-program-name "aspell")
+(setq browse-url-browser-function 'browse-url-default-macosx-browser)
