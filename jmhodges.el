@@ -31,6 +31,8 @@
 (require 'rcov-overlay)
 (require 'yasnippet_mode_config)
 
+(require 'tramp-cmds) ; Fixing boogy emacs-starter-kit boot
+
 (remove-hook 'coding-hooks 'pretty-lambda)
 (setq ispell-program-name "aspell")
 (setq browse-url-browser-function 'browse-url-default-macosx-browser)
