@@ -13,6 +13,7 @@
 (add-to-list 'load-path "~/.emacs.d/jmhodges")
 
 (add-to-list 'load-path "~/.emacs.d/jmhodges/scala-mode")
+(add-to-list 'load-path "~/.emacs.d/jmhodges/go-mode")
 
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
@@ -33,6 +34,9 @@
 
 (require 'tramp-cmds) ; Fixing buggy emacs-starter-kit boot
 
+(require 'go-mode-load)
+
+(setq default-tab-width 4)
 (remove-hook 'coding-hooks 'pretty-lambda)
 (setq ispell-program-name "aspell")
 (setq browse-url-browser-function 'browse-url-default-macosx-browser)
