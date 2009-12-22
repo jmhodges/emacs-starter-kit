@@ -32,6 +32,8 @@
 (require 'rcov-overlay)
 (require 'yasnippet_mode_config)
 
+(load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
+
 (require 'tramp-cmds) ; Fixing buggy emacs-starter-kit boot
 
 (require 'go-mode-load)
