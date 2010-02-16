@@ -32,7 +32,7 @@
 (require 'url_decode)
 (require 'rcov-overlay)
 (require 'yasnippet_mode_config)
-(require 'puppet-mode-init)
+(load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
 (load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
 
 (require 'tramp-cmds) ; Fixing buggy emacs-starter-kit boot
