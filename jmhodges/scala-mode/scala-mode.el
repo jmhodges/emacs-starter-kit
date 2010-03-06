@@ -4,13 +4,13 @@
 ;; Copyright (C) 2009 Scala Dev Team at EPFL
 ;; Authors: See AUTHORS file
 ;; Keywords: scala languages oop
-;; $Id$
+;; $Id: scala-mode.el 20031 2009-12-07 11:59:42Z cunei $
 
 ;;; License
 
 ;; SCALA LICENSE
 ;;  
-;; Copyright (c) 2002-2009 EPFL, Lausanne, unless otherwise specified.
+;; Copyright (c) 2002-2010 EPFL, Lausanne, unless otherwise specified.
 ;; All rights reserved.
 ;;  
 ;; This software was developed by the Programming Methods Laboratory of the
@@ -73,7 +73,7 @@
   :group 'scala)
 
 (defconst scala-mode-version "0.5.99.5")
-(defconst scala-mode-svn-revision "$Revision$")
+(defconst scala-mode-svn-revision "$Revision: 20031 $")
 (defconst scala-bug-e-mail "scala@listes.epfl.ch")
 (defconst scala-web-url "http://scala-lang.org/")
 

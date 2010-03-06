@@ -5,13 +5,13 @@
 ;; Modified by Anders Bach Nielsen <andersbach.nielsen at epfl dot ch> to fit into the scala mode
 ;; Based on ruby-electric by Dee Zsombor <dee dot zsombor at gmail dot com>.
 ;; Keywords: scala languages oop
-;; $Id$
+;; $Id: scala-mode-feature-electric.el 20031 2009-12-07 11:59:42Z cunei $
 
 ;;; License
 
 ;; SCALA LICENSE
 ;;  
-;; Copyright (c) 2002-2009 EPFL, Lausanne, unless otherwise specified.
+;; Copyright (c) 2002-2010 EPFL, Lausanne, unless otherwise specified.
 ;; All rights reserved.
 ;;  
 ;; This software was developed by the Programming Methods Laboratory of the
