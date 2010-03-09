@@ -1,9 +1,9 @@
 ; Avoiding backspace
 (global-set-key "\C-w" 'backward-kill-word)
 ; And rebind kill-region to these
-(global-set-key "\C-x\C-k" 'kill-region)
+; (global-set-key "\C-x\C-k" 'kill-region)
 ; I don't agree with Yegge, yet.
-; (global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -17,6 +17,13 @@
 (add-to-list 'load-path "~/.emacs.d/jmhodges/puppet-mode")
 
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(defun whitespace-mode-hook ()
+  (whitespace-mode)
+  )
+
+(add-hook 'coding-hook 'whitespace-mode-hook)
+(remove-hook 'coding-hook 'pretty-lambdas)
 
 (require 'font_config)
 (require 'python_mode_config)
