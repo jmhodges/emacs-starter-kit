@@ -1,3 +1,6 @@
 [submodule "jmhodges/piglatin-mode"]
 	path = jmhodges/piglatin-mode
 	url = git://github.com/dvryaboy/piglatin-mode.git
+[submodule "jmhodges/mo-git-blame"]
+	path = jmhodges/mo-git-blame
+	url = git://git.bunkus.org/mo-git-blame.git
