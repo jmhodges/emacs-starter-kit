@@ -16,5 +16,5 @@
   (c-set-style "mine")
 
   )
-(add-hook 'java-mode-hook 'run-coding-hook)
+
 (add-hook 'java-mode-hook 'jmhodges-java-identation)
