@@ -1,4 +1,3 @@
-(provide 'java_mode_config)
 (defun jmhodges-java-identation ()
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
@@ -18,3 +17,4 @@
   )
 
 (add-hook 'java-mode-hook 'jmhodges-java-identation)
+(provide 'java_mode_config)
