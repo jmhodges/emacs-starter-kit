@@ -1,7 +1,7 @@
 (defun jmhodges-java-identation ()
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
-  (c-add-style "mine" '("java"
+  (c-add-style "java-mine" '(
                             (c-basic-offset . 4)
                             (c-hanging-braces-alist
                              ((substatement-open)
@@ -12,7 +12,7 @@
                             (c-offsets-alist
                              (substatement-open . 0))
                              ))
-  (c-set-style "mine")
+  (c-set-style "java-mine")
 
   )
 
