@@ -5,6 +5,8 @@
 ; I don't agree with Yegge, yet.
 (global-set-key "\C-c\C-k" 'kill-region)
 
+(global-set-key "\C-c\M-." 'find-tag-other-window)
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -39,6 +41,9 @@
 (require 'url_decode)
 (require 'rcov-overlay)
 (require 'yasnippet_mode_config)
+(require 'full_ack_config)
+(require 'erc_config)
+(require 'org_mode_config)
 (load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
 (load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
 
