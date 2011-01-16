@@ -2,7 +2,7 @@
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
   (c-add-style "java-mine" '(
-                            (c-basic-offset . 4)
+                            (c-basic-offset . 2)
                             (c-hanging-braces-alist
                              ((substatement-open)
                               (block-close . c-snug-do-while)
