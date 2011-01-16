@@ -48,6 +48,7 @@
 (require 'erc_config)
 (require 'org_mode_config)
 (require 'ensime_config)
+(require 'writing)
 (load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
 (load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
 
