@@ -11,6 +11,9 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+(setq fill-column 78)
+(setq default-fill-column 78)
+
 ; FIXME use load-file-name for this.
 (add-to-list 'load-path "~/.emacs.d/jmhodges")
 
