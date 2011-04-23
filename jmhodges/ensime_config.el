@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/jmhodges/ensime_2.8.1-0.3.9/elisp/")
+(add-to-list 'load-path "~/.emacs.d/jmhodges/ensime_2.8.1-0.4.4/elisp/")
 (require 'ensime)
 
 ;; Commented out because of all the 2.7 work I do. IIRC, this breaks
