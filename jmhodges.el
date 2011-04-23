@@ -26,7 +26,12 @@
 (defun whitespace-mode-hook ()
   (whitespace-mode)
   )
-
+; Removing lines from starter-kit's default whitespace-style as a) it's hard
+; to read the lines in Other People's code and b) disabling whitespace mode in
+; some language modes also removes the syntax highlighting. Too tired to do
+; fix b) and a) is truly aggravating
+(setq whitespace-style '(trailing space-before-tab
+                              indentation space-after-tab))
 (add-hook 'coding-hook 'whitespace-mode-hook)
 (remove-hook 'coding-hook 'pretty-lambdas)
 
@@ -48,7 +53,7 @@
 (require 'erc_config)
 (require 'org_mode_config)
 (require 'ensime_config)
-(require 'writing)
+
 (load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
 (load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
 
