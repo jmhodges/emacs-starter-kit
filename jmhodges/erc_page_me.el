@@ -7,7 +7,7 @@
   "Alist of nicks and the last time they tried to trigger a
 notification")
 
-(defvar my-erc-page-timeout 1
+(defvar my-erc-page-timeout 5
   "Number of seconds that must elapse between notifications from
 the same person.")
 
@@ -58,7 +58,7 @@ matches a regexp in `erc-keywords'."
              (null (string-match "\\(bot\\|serv\\)!" full-nick))
              ;; or from those who abuse the system
              (my-erc-page-allowed full-nick))
-    (let ((nick (car (erc-parse-user (full-nick)))))
+    (let ((nick (car (erc-parse-user full-nick))))
      (my-erc-page-popup-notification nick "in a room"))))
 
 (add-hook 'erc-text-matched-hook 'my-erc-page-me)
