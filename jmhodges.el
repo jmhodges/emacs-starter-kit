@@ -62,6 +62,7 @@
 (require 'go-mode-load)
 
 (setq default-tab-width 4)
-(remove-hook 'coding-hooks 'pretty-lambda)
 (setq ispell-program-name "aspell")
 (setq browse-url-browser-function 'browse-url-default-macosx-browser)
+
+(server-start)
