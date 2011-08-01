@@ -27,8 +27,8 @@
 
 (defvar go-mode-syntax-table
   (let ((st (make-syntax-table)))
-    ;; Symbols
-    (modify-syntax-entry ?_  "_" st)
+    ;; Add _ to :word: character class
+    (modify-syntax-entry ?_  "w" st)
 
     ;; Operators (punctuation)
     (modify-syntax-entry ?+  "." st)
@@ -92,7 +92,7 @@ some syntax analysis.")
       ;; Map key type
       (,(concat "\\<map\\s *\\[" type-name) 1 font-lock-type-face)
       ;; Channel value type
-      (,(concat "\\<chan\\s *\\(?:<-\\)?" type-name) 1 font-lock-type-face)
+      (,(concat "\\<chan\\>\\s *\\(?:<-\\)?" type-name) 1 font-lock-type-face)
       ;; new/make type
       (,(concat "\\<\\(?:new\\|make\\)\\>\\(?:\\s \\|)\\)*(" type-name) 1 font-lock-type-face)
       ;; Type conversion
@@ -498,21 +498,33 @@ Useful for development work."
   (require 'go-mode)
   (go-mode))
 
-(provide 'go-mode)
-
+;;;###autoload
 (defun gofmt ()
-  "Pipe the current buffer through the external tool `gofmt`."
-  
-  (interactive)
-  ;; for some reason save-excursion isn't working
-  ;; probably because shell-command-on-region deletes the contents of the
-  ;; region before filling in the new values
-  ;; so we will save the point/mark by hand
-  ;; similarly we can't use push-mark/pop-mark
-  (let ((old-mark (mark t)) (old-point (point)))
-    (save-restriction
-      (let (deactivate-mark)
-        (widen)
-        (shell-command-on-region (point-min) (point-max) "gofmt" t t shell-command-default-error-buffer)))
-    (goto-char (min old-point (point-max)))
-    (if old-mark (set-mark (min old-mark (point-max))))))
+ "Pipe the current buffer through the external tool `gofmt`.
+Replace the current buffer on success; display errors on failure."
+
+ (interactive)
+ (let ((srcbuf (current-buffer)))
+   (with-temp-buffer
+     (let ((outbuf (current-buffer))
+           (errbuf (get-buffer-create "*Gofmt Errors*")))
+       (with-current-buffer errbuf (erase-buffer))
+       (with-current-buffer srcbuf
+         (save-restriction
+           (let (deactivate-mark)
+             (widen)
+             (if (= 0 (call-process-region (point-min) (point-max) "gofmt"
+                                           nil t nil "-w=true"))
+                 ))))
+
+))))
+
+;;;###autoload
+(defun gofmt-before-save ()
+ "Add this to .emacs to run gofmt on the current buffer when saving:
+ (add-hook 'before-save-hook #'gofmt-before-save)"
+
+ (interactive)
+ (when (eq major-mode 'go-mode) (gofmt)))
+
+(provide 'go-mode)
