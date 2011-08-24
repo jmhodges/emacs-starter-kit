@@ -69,8 +69,8 @@
 some syntax analysis.")
 
 (defvar go-mode-font-lock-keywords
-  (let ((builtins '("cap" "close" "closed" "len" "make" "new"
-                    "panic" "panicln" "print" "println"))
+  (let ((builtins '("append" "cap" "close" "complex" "copy" "imag" "len"
+                    "make" "new" "panic" "print" "println" "real" "recover"))
         (constants '("nil" "true" "false" "iota"))
         (type-name "\\s *\\(?:[*(]\\s *\\)*\\(?:\\w+\\s *\\.\\s *\\)?\\(\\w+\\)")
         )
@@ -507,17 +507,31 @@ Replace the current buffer on success; display errors on failure."
  (let ((srcbuf (current-buffer)))
    (with-temp-buffer
      (let ((outbuf (current-buffer))
-           (errbuf (get-buffer-create "*Gofmt Errors*")))
+           (errbuf (get-buffer-create "*Gofmt Errors*"))
+           (coding-system-for-read 'utf-8)    ;; use utf-8 with subprocesses
+           (coding-system-for-write 'utf-8))
        (with-current-buffer errbuf (erase-buffer))
        (with-current-buffer srcbuf
          (save-restriction
            (let (deactivate-mark)
              (widen)
-             (if (= 0 (call-process-region (point-min) (point-max) "gofmt"
-                                           nil t nil "-w=true"))
-                 ))))
+             (if (= 0 (shell-command-on-region (point-min) (point-max) "gofmt"
+                                               outbuf nil errbuf))
+                 ;; gofmt succeeded: replace the current buffer with outbuf,
+                 ;; restore the mark and point, and discard errbuf.
+                 (let ((old-mark (mark t)) (old-point (point)))
+                   (erase-buffer)
+                   (insert-buffer-substring outbuf)
+                   (goto-char (min old-point (point-max)))
+                   (if old-mark (push-mark (min old-mark (point-max)) t))
+                   (kill-buffer errbuf))
 
-))))
+               ;; gofmt failed: display the errors
+               (display-buffer errbuf)))))
+
+       ;; Collapse any window opened on outbuf if shell-command-on-region
+       ;; displayed it.
+       (delete-windows-on outbuf)))))
 
 ;;;###autoload
 (defun gofmt-before-save ()
