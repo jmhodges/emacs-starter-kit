@@ -53,6 +53,8 @@
 (require 'erc_config)
 (require 'org_mode_config)
 (require 'ensime_config)
+(require 'protobuf-mode)
+(require 'protobuf_mode_config)
 
 (load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
 (load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
