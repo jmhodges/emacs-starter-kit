@@ -1,4 +1,5 @@
 (provide 'ruby_mode_config)
+(setq ruby-insert-encoding-magic-comment nil)
 (add-to-list 'auto-mode-alist '("Buildfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("buildfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
