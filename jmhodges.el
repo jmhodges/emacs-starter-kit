@@ -32,7 +32,7 @@
 ; fix b) and a) is truly aggravating
 (setq whitespace-style '(trailing space-before-tab
                               indentation space-after-tab))
-(add-hook 'coding-hook 'whitespace-mode-hook)
+; (add-hook 'coding-hook 'whitespace-mode-hook)
 (remove-hook 'coding-hook 'pretty-lambdas)
 
 (require 'font_config)
