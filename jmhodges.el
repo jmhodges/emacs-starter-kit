@@ -53,6 +53,7 @@
 (require 'erc_config)
 (require 'org_mode_config)
 (require 'ensime_config)
+(require 'javascript_mode_config)
 (require 'protobuf-mode)
 (require 'protobuf_mode_config)
 
