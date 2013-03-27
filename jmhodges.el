@@ -56,15 +56,19 @@
 (require 'javascript_mode_config)
 (require 'protobuf-mode)
 (require 'protobuf_mode_config)
+(require 'pig-mode)
+(require 'pig_mode_config)
 
 (load-file "~/.emacs.d/jmhodges/puppet-mode/puppet-mode-init.el")
-(load-file "~/.emacs.d/jmhodges/piglatin-mode/piglatin.el")
 
 (require 'tramp-cmds) ; Fixing buggy emacs-starter-kit boot
 
 (require 'go-mode-load)
 
 (setq default-tab-width 4)
+(setq tab-width 4)
+(setq indent-tabs-mode nil)
+
 (setq ispell-program-name "aspell")
 (setq browse-url-browser-function 'browse-url-default-macosx-browser)
 
