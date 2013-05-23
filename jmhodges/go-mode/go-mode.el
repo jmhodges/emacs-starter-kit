@@ -42,6 +42,19 @@
       'kill-whole-line
     'kill-entire-line))
 
+;; Delete the current line without putting it in the kill-ring.
+(defun go--delete-whole-line (&optional arg)
+  ;; Emacs uses both kill-region and kill-new, Xemacs only uses
+  ;; kill-region. In both cases we turn them into operations that do
+  ;; not modify the kill ring. This solution does depend on the
+  ;; implementation of kill-line, but it's the only viable solution
+  ;; that does not require to write kill-line from scratch.
+  (flet ((kill-region (beg end)
+                      (delete-region beg end))
+         (kill-new (s) ()))
+    (go--kill-whole-line arg)))
+
+
 ;; XEmacs unfortunately does not offer position-bytes. We can fall
 ;; back to just using (point), but it will be incorrect as soon as
 ;; multibyte characters are being used.
@@ -77,7 +90,12 @@
 (defconst go-label-regexp go-identifier-regexp)
 (defconst go-type-regexp "[[:word:][:multibyte:]*]+")
 (defconst go-func-regexp (concat (go--regexp-enclose-in-symbol "func") "\\s *\\(" go-identifier-regexp "\\)"))
-(defconst go-func-meth-regexp (concat (go--regexp-enclose-in-symbol "func") "\\s *\\(?:(\\s *" go-identifier-regexp "\\s +" go-type-regexp "\\s *)\\s *\\)?\\(" go-identifier-regexp "\\)("))
+(defconst go-func-meth-regexp (concat
+                               (go--regexp-enclose-in-symbol "func") "\\s *\\(?:(\\s *"
+                               "\\(" go-identifier-regexp "\\s +\\)?" go-type-regexp
+                               "\\s *)\\s *\\)?\\("
+                               go-identifier-regexp
+                               "\\)("))
 (defconst go-builtins
   '("append" "cap"   "close"   "complex" "copy"
     "delete" "imag"  "len"     "make"    "new"
@@ -159,6 +177,7 @@
      ;; TODO do we actually need this one or isn't it just a function call?
      (,(concat "\\.\\s *(" go-type-name-regexp) 1 font-lock-type-face) ;; Type conversion
      (,(concat (go--regexp-enclose-in-symbol "func") "[[:space:]]+(" go-identifier-regexp "[[:space:]]+" go-type-name-regexp ")") 1 font-lock-type-face) ;; Method receiver
+     (,(concat (go--regexp-enclose-in-symbol "func") "[[:space:]]+(" go-type-name-regexp ")") 1 font-lock-type-face) ;; Method receiver without variable name
      ;; Like the original go-mode this also marks compound literal
      ;; fields. There, it was marked as to fix, but I grew quite
      ;; accustomed to it, so it'll stay for now.
@@ -518,7 +537,7 @@ buffer."
                 (goto-char (point-min))
                 (forward-line (- from line-offset 1))
                 (incf line-offset len)
-                (go--kill-whole-line len)))
+                (go--delete-whole-line len)))
              (t
               (error "invalid rcs patch or internal error in go--apply-rcs-patch")))))))))
 
@@ -847,7 +866,7 @@ will be commented, otherwise they will be removed completely."
           (beginning-of-line)
           (if arg
               (comment-region (line-beginning-position) (line-end-position))
-            (go--kill-whole-line)))
+            (go--delete-whole-line)))
         (message "Removed %d imports" (length lines)))
       (if flymake-state (flymake-mode-on)))))
 
